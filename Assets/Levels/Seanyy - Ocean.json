@@ -1,0 +1,185 @@
+{
+    "songName": "Seanyy - Ocean",
+    "notes": [
+        {
+            "timing": 1.899999976158142,
+            "row": 0,
+            "column": 3,
+            "isRightDrum": true
+        },
+        {
+            "timing": 5.599999904632568,
+            "row": 0,
+            "column": 1,
+            "isRightDrum": false
+        },
+        {
+            "timing": 9.399999618530274,
+            "row": 0,
+            "column": 3,
+            "isRightDrum": true
+        },
+        {
+            "timing": 13.100000381469727,
+            "row": 0,
+            "column": 1,
+            "isRightDrum": false
+        },
+        {
+            "timing": 16.899999618530275,
+            "row": 0,
+            "column": 1,
+            "isRightDrum": false
+        },
+        {
+            "timing": 16.899999618530275,
+            "row": 0,
+            "column": 3,
+            "isRightDrum": true
+        },
+        {
+            "timing": 18.799999237060548,
+            "row": 0,
+            "column": 0,
+            "isRightDrum": false
+        },
+        {
+            "timing": 20.600000381469728,
+            "row": 0,
+            "column": 4,
+            "isRightDrum": true
+        },
+        {
+            "timing": 22.5,
+            "row": 1,
+            "column": 0,
+            "isRightDrum": false
+        },
+        {
+            "timing": 24.399999618530275,
+            "row": 1,
+            "column": 4,
+            "isRightDrum": true
+        },
+        {
+            "timing": 26.299999237060548,
+            "row": 0,
+            "column": 1,
+            "isRightDrum": true
+        },
+        {
+            "timing": 28.100000381469728,
+            "row": 0,
+            "column": 3,
+            "isRightDrum": false
+        },
+        {
+            "timing": 28.600000381469728,
+            "row": 0,
+            "column": 3,
+            "isRightDrum": true
+        },
+        {
+            "timing": 29.100000381469728,
+            "row": 0,
+            "column": 1,
+            "isRightDrum": false
+        },
+        {
+            "timing": 29.600000381469728,
+            "row": 0,
+            "column": 1,
+            "isRightDrum": true
+        },
+        {
+            "timing": 32.599998474121097,
+            "row": 0,
+            "column": 3,
+            "isRightDrum": true
+        },
+        {
+            "timing": 32.79999923706055,
+            "row": 0,
+            "column": 4,
+            "isRightDrum": true
+        },
+        {
+            "timing": 33.29999923706055,
+            "row": 0,
+            "column": 4,
+            "isRightDrum": true
+        },
+        {
+            "timing": 33.79999923706055,
+            "row": 0,
+            "column": 3,
+            "isRightDrum": true
+        },
+        {
+            "timing": 34.5,
+            "row": 0,
+            "column": 1,
+            "isRightDrum": false
+        },
+        {
+            "timing": 34.70000076293945,
+            "row": 0,
+            "column": 0,
+            "isRightDrum": false
+        },
+        {
+            "timing": 35.20000076293945,
+            "row": 0,
+            "column": 0,
+            "isRightDrum": false
+        },
+        {
+            "timing": 35.599998474121097,
+            "row": 0,
+            "column": 1,
+            "isRightDrum": false
+        },
+        {
+            "timing": 35.599998474121097,
+            "row": 0,
+            "column": 3,
+            "isRightDrum": true
+        },
+        {
+            "timing": 36.099998474121097,
+            "row": 0,
+            "column": 4,
+            "isRightDrum": true
+        },
+        {
+            "timing": 36.099998474121097,
+            "row": 0,
+            "column": 0,
+            "isRightDrum": false
+        },
+        {
+            "timing": 36.599998474121097,
+            "row": 0,
+            "column": 1,
+            "isRightDrum": false
+        },
+        {
+            "timing": 36.599998474121097,
+            "row": 0,
+            "column": 3,
+            "isRightDrum": true
+        },
+        {
+            "timing": 37.0,
+            "row": 0,
+            "column": 4,
+            "isRightDrum": true
+        },
+        {
+            "timing": 37.0,
+            "row": 0,
+            "column": 0,
+            "isRightDrum": false
+        }
+    ]
+}

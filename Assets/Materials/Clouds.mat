@@ -1,0 +1,62 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-100743859111481876
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 639247ca83abc874e893eb93af2b5e44, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  version: 0
+--- !u!21 &2100000
+Material:
+  serializedVersion: 8
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Clouds
+  m_Shader: {fileID: -6465566751694194690, guid: 39b85bc9f1d5a42f6a62c3ea44b95aa2, type: 3}
+  m_Parent: {fileID: 0}
+  m_ModifiedSerializedProperties: 0
+  m_ValidKeywords: []
+  m_InvalidKeywords: []
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_LockedProperties: 
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs: []
+    m_Ints: []
+    m_Floats:
+    - _BUILTIN_QueueControl: 0
+    - _BUILTIN_QueueOffset: 0
+    - _Base_Scale: 0.01
+    - _Base_Speed: 20
+    - _Base_Strength: 2
+    - _Curvature_Radius: -326.5
+    - _Emission_Strength: 1
+    - _Fade_Depth: 40.2
+    - _Fresnel_Opacity: -0.26
+    - _Fresnel_Power: 8
+    - _Noise_Edge_1: -1
+    - _Noise_Edge_2: 2
+    - _Noise_Height: 30
+    - _Noise_Power: 2
+    - _Noise_Scale: 0.02
+    - _Noise_Speed: 30
+    m_Colors:
+    - _Color_Peak: {r: 0.98039216, g: 0.61960787, b: 0.34901962, a: 1}
+    - _Color_Valley: {r: 0.7264151, g: 0, b: 0.065180376, a: 1}
+    - _Noise_Remap: {r: 0, g: 1, b: 1, a: 2.7}
+    - _Rotate_Projection: {r: 1, g: 0, b: 0, a: 90}
+  m_BuildTextureStacks: []

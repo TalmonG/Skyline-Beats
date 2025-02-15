@@ -124,10 +124,6 @@ public class LeaderboardManager : MonoBehaviour
                 GameObject leaderboardEntry = Instantiate(leaderboardTemplate, leaderboardContainer.transform);
                 leaderboardEntry.SetActive(true);
                 
-                RectTransform rectTransform = leaderboardEntry.GetComponent<RectTransform>();
-                Vector2 padding = new Vector2(0, paddingValue);
-                rectTransform.sizeDelta += padding;
-
                 // Find all TextMeshProUGUI components in the children's children
                 TextMeshProUGUI rankText = null;
                 TextMeshProUGUI nameText = null;
@@ -159,7 +155,7 @@ public class LeaderboardManager : MonoBehaviour
                     continue;
                 }
 
-                rankText.text = (i + 1).ToString();
+                rankText.text = "#" + (i + 1).ToString();
                 nameText.text = player.name;
                 scoreText.text = player.score.ToString();
                 

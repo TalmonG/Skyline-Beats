@@ -83,6 +83,7 @@ public class UIManager : MonoBehaviour
     public void EnableLevelFailedCanvas()
     {
         levelFailedCanvas.SetActive(true);
+        Debug.Log("Level Failed Canvas Enabled");
     }
 
     public void DisableLevelSelectorCanvas()
@@ -103,12 +104,12 @@ public class UIManager : MonoBehaviour
     public void DisableLevelCompleteCanvas()
     {
         levelCompleteCanvas.SetActive(false);
-        Debug.Log("Level Complete Canvas Disabled");
     }
 
     public void DisableLevelFailedCanvas()
     {
         levelFailedCanvas.SetActive(false);
+        Debug.Log("Level Failed Canvas Disabled");
     }
 
     public void LevelCompleteContinueButton()

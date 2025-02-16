@@ -45,7 +45,7 @@ Material:
     - _Base_Strength: 2
     - _Curvature_Radius: -326.5
     - _Emission_Strength: 1
-    - _Fade_Depth: 40.2
+    - _Fade_Depth: -40.2
     - _Fresnel_Opacity: -0.26
     - _Fresnel_Power: 8
     - _Noise_Edge_1: -1

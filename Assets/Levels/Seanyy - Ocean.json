@@ -148,14 +148,14 @@
         {
             "timing": 36.099998474121097,
             "row": 0,
-            "column": 4,
-            "isRightDrum": true
+            "column": 0,
+            "isRightDrum": false
         },
         {
             "timing": 36.099998474121097,
             "row": 0,
-            "column": 0,
-            "isRightDrum": false
+            "column": 4,
+            "isRightDrum": true
         },
         {
             "timing": 36.599998474121097,
@@ -180,6 +180,30 @@
             "row": 0,
             "column": 0,
             "isRightDrum": false
+        },
+        {
+            "timing": 38.20000076293945,
+            "row": 0,
+            "column": 0,
+            "isRightDrum": false
+        },
+        {
+            "timing": 38.900001525878909,
+            "row": 0,
+            "column": 4,
+            "isRightDrum": true
+        },
+        {
+            "timing": 39.099998474121097,
+            "row": 0,
+            "column": 1,
+            "isRightDrum": false
+        },
+        {
+            "timing": 39.79999923706055,
+            "row": 0,
+            "column": 3,
+            "isRightDrum": true
         }
     ]
 }

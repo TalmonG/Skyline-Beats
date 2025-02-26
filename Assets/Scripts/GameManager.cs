@@ -116,7 +116,7 @@ public class GameManager : MonoBehaviour
     private void GameOver()
     {
         Debug.Log("Game Over");
-
+        songManager.FadeOutSong();
         // TODO: Add game over screen
         uIManager.EnableLevelFailedCanvas();
         //ResetGame();

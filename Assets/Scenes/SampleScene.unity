@@ -700,6 +700,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e5f12bc9ca5dd7044b41dffa82fdc741, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  songPositionSlider: {fileID: 247380808}
 --- !u!1 &84456151
 GameObject:
   m_ObjectHideFlags: 0
@@ -1454,81 +1455,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 200674332}
   m_CullTransparentMesh: 1
---- !u!1 &246871319
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 246871320}
-  - component: {fileID: 246871322}
-  - component: {fileID: 246871321}
-  m_Layer: 5
-  m_Name: Handle
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &246871320
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 246871319}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 977521805}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 20, y: 0}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &246871321
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 246871319}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_Sprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 0
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
-  m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
---- !u!222 &246871322
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 246871319}
-  m_CullTransparentMesh: 1
 --- !u!1 &247380806
 GameObject:
   m_ObjectHideFlags: 0
@@ -1560,7 +1486,6 @@ RectTransform:
   m_Children:
   - {fileID: 717042994}
   - {fileID: 328885273}
-  - {fileID: 977521805}
   m_Father: {fileID: 1239972247}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -1607,10 +1532,10 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
-  m_TargetGraphic: {fileID: 246871321}
+  m_Interactable: 0
+  m_TargetGraphic: {fileID: 0}
   m_FillRect: {fileID: 575135815}
-  m_HandleRect: {fileID: 246871320}
+  m_HandleRect: {fileID: 0}
   m_Direction: 0
   m_MinValue: 0
   m_MaxValue: 1
@@ -4065,7 +3990,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 0.5735729, b: 0, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -4081,7 +4006,7 @@ MonoBehaviour:
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
+  m_PixelsPerUnitMultiplier: 1.5
 --- !u!222 &575135817
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -6684,42 +6609,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963983056}
   m_CullTransparentMesh: 1
---- !u!1 &977521804
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 977521805}
-  m_Layer: 5
-  m_Name: Handle Slide Area
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &977521805
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 977521804}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 246871320}
-  m_Father: {fileID: 247380807}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: -20, y: 0}
-  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &986517538
 GameObject:
   m_ObjectHideFlags: 0
@@ -11657,25 +11546,69 @@ MonoBehaviour:
     row: 0
     column: 0
     isRightDrum: 0
-  - timing: 38.2
+  - timing: 37.5
     row: 0
-    column: 0
+    column: 2
     isRightDrum: 0
-  - timing: 38.9
-    row: 0
-    column: 4
-    isRightDrum: 1
-  - timing: 39.1
+  - timing: 38.4
     row: 0
     column: 1
     isRightDrum: 0
-  - timing: 39.8
+  - timing: 38.9
     row: 0
     column: 3
     isRightDrum: 1
+  - timing: 39.4
+    row: 0
+    column: 1
+    isRightDrum: 0
   - timing: 40.1
+    row: 0
+    column: 3
+    isRightDrum: 1
+  - timing: 40.3
+    row: 0
+    column: 4
+    isRightDrum: 1
+  - timing: 40.8
+    row: 0
+    column: 4
+    isRightDrum: 1
+  - timing: 41.3
     row: 1
+    column: 4
+    isRightDrum: 1
+  - timing: 41.7
+    row: 0
+    column: 3
+    isRightDrum: 1
+  - timing: 42.2
+    row: 1
+    column: 4
+    isRightDrum: 1
+  - timing: 42.7
+    row: 1
+    column: 4
+    isRightDrum: 1
+  - timing: 43.1
+    row: 0
+    column: 4
+    isRightDrum: 1
+  - timing: 43.6
+    row: 0
+    column: 2
+    isRightDrum: 0
+  - timing: 44.1
+    row: 0
     column: 0
+    isRightDrum: 0
+  - timing: 44.5
+    row: 0
+    column: 1
+    isRightDrum: 0
+  - timing: 45
+    row: 0
+    column: 2
     isRightDrum: 0
   showGridGizmos: 0
   showDeathZone: 0
@@ -11686,10 +11619,10 @@ MonoBehaviour:
   leftDrumGizmoColor: {r: 0, g: 0, b: 1, a: 1}
   rightDrumGizmoColor: {r: 1, g: 0, b: 0, a: 1}
   lastAddedNote:
-    timing: 39.8
+    timing: 45
     row: 0
-    column: 3
-    isRightDrum: 1
+    column: 2
+    isRightDrum: 0
   noteSpawnOffset: 2
   noteSpawnDistance: 10
   randomBoolOne: 0

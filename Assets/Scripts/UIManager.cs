@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
@@ -14,12 +15,18 @@ public class UIManager : MonoBehaviour
     private GameObject leaderboardCanvas;
     private GameObject levelCompleteCanvas;
     private GameObject levelFailedCanvas;
+
+    [SerializeField]
+    private Slider songPositionSlider;
+    private SongManager songManager;
+
     // Start is called before the first frame update
     void Start()
     {
         gameManager = FindObjectOfType<GameManager>();
         audioManager = FindObjectOfType<AudioManager>();
         noteSpawner = FindObjectOfType<NoteSpawner>();
+        songManager = FindObjectOfType<SongManager>();
 
         // Find with tags
         //canvasGroup = GameObject.FindGameObjectWithTag("CanvasGroup"); // could use but i like controlling all canvas seperately
@@ -34,13 +41,23 @@ public class UIManager : MonoBehaviour
         leaderboardCanvas.SetActive(true);
         levelCompleteCanvas.SetActive(false);
         levelFailedCanvas.SetActive(false);
+
+        // Initialize slider
+        if (songPositionSlider != null && songManager != null && songManager.musicSource.clip != null)
+        {
+            songPositionSlider.minValue = 0f;
+            songPositionSlider.maxValue = songManager.musicSource.clip.length;
+        }
     }
 
     // Update is called once per frame
-    // void Update()
-    // {
-        
-    // }
+    void Update()
+    {
+        if (songManager != null && songManager.musicSource.clip != null && songPositionSlider != null)
+        {
+            songPositionSlider.value = songManager.currentSongTime;
+        }
+    }
 
     public void PlayButton()
     {

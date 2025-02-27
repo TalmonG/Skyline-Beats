@@ -17,6 +17,7 @@ public class GameManager : MonoBehaviour
     public bool STARTGAME = false;
     public bool isGameStarted = false;
     public bool isLevelComplete = false;
+    public bool isInvincible = false;
 
     [SerializeField] 
     private TextMeshPro scoreText;
@@ -38,7 +39,6 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
-
         songManager = FindObjectOfType<SongManager>();
         audioManager = FindObjectOfType<AudioManager>();
         uIManager = FindObjectOfType<UIManager>();
@@ -74,6 +74,13 @@ public class GameManager : MonoBehaviour
         comboText.text = "Combo\n" + combo;
         multiplierText.text = "X" + multiplier;
 
+        // Find and initialize toggle state
+        Toggle invincibilityToggle = GameObject.FindObjectOfType<Toggle>();
+        if (invincibilityToggle != null)
+        {
+            isInvincible = invincibilityToggle.isOn;
+            invincibilityToggle.onValueChanged.AddListener(ToggleInvincibility);
+        }
     }
 
     void Update()
@@ -145,6 +152,7 @@ public class GameManager : MonoBehaviour
         isGameResetting = false;
         isGameStarted = false;       // Added this line
         STARTGAME = false;          // Added this line
+        isInvincible = false;  // Also reset invincibility when game resets
 
         scoreText.text = "" + score;
         livesText.text = "Lives: " + lives;
@@ -210,6 +218,8 @@ public class GameManager : MonoBehaviour
 
     public void LoseLife()
     {
+        if (isInvincible) return;
+        
         if (lives > 0)  
         {
             lives--;
@@ -227,6 +237,12 @@ public class GameManager : MonoBehaviour
             if (livesText != null)
                 livesText.text = "Lives: " + lives;
         }
+    }
+
+    public void ToggleInvincibility(bool value)
+    {
+        isInvincible = value;
+        Debug.Log($"Invincibility {(value ? "enabled" : "disabled")}");
     }
 
 }

@@ -27,6 +27,7 @@ public class NoteSpawner : MonoBehaviour
     public GameObject rightDrumPrefab;
     public float spawnDistance = 20f;
     public string levelName = "DefaultLevel";
+    private List<DrumNoteData> originalNoteList = new List<DrumNoteData>();
     public List<DrumNoteData> noteDataList = new List<DrumNoteData>();
     
     public bool showGridGizmos = false;
@@ -209,15 +210,27 @@ public class NoteSpawner : MonoBehaviour
         LevelData levelData = SongFileHandler.LoadLevel(levelName);
         if (levelData != null)
         {
-            noteDataList = new List<DrumNoteData>(levelData.notes);
-            noteDataList.Sort((a, b) => a.timing.CompareTo(b.timing));
-            Debug.Log($"Loaded {noteDataList.Count} notes for song: {levelName}");
+            // Store in original list and sort
+            originalNoteList = new List<DrumNoteData>(levelData.notes);
+            originalNoteList.Sort((a, b) => a.timing.CompareTo(b.timing));
+            
+            // Initialize spawn list
+            ResetNoteSpawnList();
+            
+            Debug.Log($"Loaded {originalNoteList.Count} notes for song: {levelName}");
         }
         else
         {
+            originalNoteList.Clear();
             noteDataList.Clear();
             Debug.Log($"No existing data found for song: {levelName}");
         }
+    }
+
+    public void ResetNoteSpawnList()
+    {
+        // Create a new spawn list from the original data
+        noteDataList = new List<DrumNoteData>(originalNoteList);
     }
 
     // Get all available songs

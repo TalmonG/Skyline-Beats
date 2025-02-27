@@ -61,11 +61,11 @@ public class LeaderboardManager : MonoBehaviour
     {
         try
         {
-            Debug.Log("Starting LoadLeaderboard");
+            //Debug.Log("Starting LoadLeaderboard");
             string directoryPath = Path.Combine(Application.dataPath, "LeaderboardData");
             string filePath = Path.Combine(directoryPath, "LeaderboardData.json");
             
-            Debug.Log($"Looking for file at: {filePath}");
+            //Debug.Log($"Looking for file at: {filePath}");
 
             if (!File.Exists(filePath))
             {
@@ -73,7 +73,7 @@ public class LeaderboardManager : MonoBehaviour
                 return;
             }
 
-            Debug.Log("Reading JSON file");
+            //Debug.Log("Reading JSON file");
             string jsonData = File.ReadAllText(filePath);
             
             // Create wrapper and parse
@@ -86,14 +86,14 @@ public class LeaderboardManager : MonoBehaviour
                 return;
             }
 
-            Debug.Log($"Number of players loaded: {leaderboardData.players.Count}");
+            //Debug.Log($"Number of players loaded: {leaderboardData.players.Count}");
 
             // Sort players by score
             var sortedPlayers = leaderboardData.players
                 .OrderByDescending(player => player.score)
                 .ToList();
 
-            Debug.Log($"Number of sorted players: {sortedPlayers.Count}");
+           // Debug.Log($"Number of sorted players: {sortedPlayers.Count}");
 
             // Verify components
             if (leaderboardTemplate == null)
@@ -109,17 +109,17 @@ public class LeaderboardManager : MonoBehaviour
             }
 
             // Clear existing entries
-            Debug.Log("Clearing existing entries");
+            //Debug.Log("Clearing existing entries");
             foreach (Transform child in leaderboardContainer.transform) {
                 Destroy(child.gameObject);
             }
 
             // Create leaderboard entries
-            Debug.Log("Creating new entries");
+            //Debug.Log("Creating new entries");
             for (int i = 0; i < sortedPlayers.Count; i++)
             {
                 var player = sortedPlayers[i];
-                Debug.Log($"Creating entry for player: {player.name}");
+                //Debug.Log($"Creating entry for player: {player.name}");
                 
                 GameObject leaderboardEntry = Instantiate(leaderboardTemplate, leaderboardContainer.transform);
                 leaderboardEntry.SetActive(true);
@@ -159,7 +159,7 @@ public class LeaderboardManager : MonoBehaviour
                 nameText.text = player.name;
                 scoreText.text = player.score.ToString();
                 
-                Debug.Log($"Successfully created entry {i + 1} for {player.name}");
+                //Debug.Log($"Successfully created entry {i + 1} for {player.name}");
             }
         }
         catch (System.Exception e)

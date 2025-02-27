@@ -11,10 +11,33 @@ public class SongManager : MonoBehaviour
     private GameManager gameManager;
     private AudioManager audioManager;
 
+    [Header("Time Control")]
+    public float skipAmount = 5f; // Amount of seconds to skip forward/backward
+    public KeyCode skipForwardKey = KeyCode.RightArrow;
+    public KeyCode skipBackwardKey = KeyCode.LeftArrow;
+
+    // Add reference to NoteSpawner
+    private NoteSpawner noteSpawner;
 
     void Start()
     {
         audioManager = FindObjectOfType<AudioManager>();
+        noteSpawner = FindObjectOfType<NoteSpawner>();
+    }
+
+    void Update()
+    {
+        if (!isSongPlaying) return;
+
+        // Handle time control input
+        if (Input.GetKeyDown(skipForwardKey))
+        {
+            SkipForward();
+        }
+        else if (Input.GetKeyDown(skipBackwardKey))
+        {
+            SkipBackward();
+        }
     }
 
     public void ResetSong()
@@ -70,5 +93,42 @@ public class SongManager : MonoBehaviour
         if (!isSongPlaying)
             return float.MinValue;  // Return a very low value to prevent note spawning before song starts
         return currentSongTime;
+    }
+
+    public void SkipForward()
+    {
+        float newTime = Mathf.Clamp(musicSource.time + skipAmount, 0f, musicSource.clip.length);
+        Debug.Log($"Skipping forward from {musicSource.time:F2}s to {newTime:F2}s");
+        musicSource.time = newTime;
+        
+        if (noteSpawner != null)
+        {
+            CleanupAndResetNotes();
+        }
+    }
+
+    public void SkipBackward()
+    {
+        float newTime = Mathf.Clamp(musicSource.time - skipAmount, 0f, musicSource.clip.length);
+        Debug.Log($"Skipping backward from {musicSource.time:F2}s to {newTime:F2}s");
+        musicSource.time = newTime;
+        
+        if (noteSpawner != null)
+        {
+            CleanupAndResetNotes();
+        }
+    }
+
+    private void CleanupAndResetNotes()
+    {
+        // Destroy all existing notes
+        DrumNote[] existingNotes = FindObjectsOfType<DrumNote>();
+        foreach (DrumNote note in existingNotes)
+        {
+            Destroy(note.gameObject);
+        }
+        
+        // Reset the spawn list
+        noteSpawner.ResetNoteSpawnList();
     }
 }

@@ -1788,9 +1788,25 @@ PrefabInstance:
       propertyPath: particleManager
       value: 
       objectReference: {fileID: 476078868}
+    - target: {fileID: 3496014984265942933, guid: b1e8158c798383d498614003b6a8df34, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3496014984265942933, guid: b1e8158c798383d498614003b6a8df34, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.501
+      objectReference: {fileID: 0}
     - target: {fileID: 4381743399556215021, guid: b1e8158c798383d498614003b6a8df34, type: 3}
       propertyPath: m_Name
       value: RightDrumStick
+      objectReference: {fileID: 0}
+    - target: {fileID: 4744384282870342126, guid: b1e8158c798383d498614003b6a8df34, type: 3}
+      propertyPath: m_MinVertexDistance
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4744384282870342126, guid: b1e8158c798383d498614003b6a8df34, type: 3}
+      propertyPath: m_Parameters.widthMultiplier
+      value: 0.0125
       objectReference: {fileID: 0}
     - target: {fileID: 8699755409825492402, guid: b1e8158c798383d498614003b6a8df34, type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -12159,6 +12175,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 764797381}
     m_Modifications:
+    - target: {fileID: 1375836082013455860, guid: 8810f1343fde8864eb99902416d80e69, type: 3}
+      propertyPath: m_Parameters.widthMultiplier
+      value: 0.0125
+      objectReference: {fileID: 0}
     - target: {fileID: 4203302973107443922, guid: 8810f1343fde8864eb99902416d80e69, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 

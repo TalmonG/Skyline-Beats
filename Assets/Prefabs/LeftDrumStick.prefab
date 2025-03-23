@@ -1067,6 +1067,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -4861754447549045607, guid: b353a6d4579f46e4b81b76ec115b2014, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 2f5b5a9d068994a7cac6b8a1c73590a1, type: 2}
+    - target: {fileID: -4157524182732408741, guid: b353a6d4579f46e4b81b76ec115b2014, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 2f5b5a9d068994a7cac6b8a1c73590a1, type: 2}
     - target: {fileID: 919132149155446097, guid: b353a6d4579f46e4b81b76ec115b2014, type: 3}
       propertyPath: m_Name
       value: DrumStick

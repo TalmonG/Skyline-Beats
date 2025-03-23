@@ -225,6 +225,7 @@ GameObject:
   - component: {fileID: 8388836709884297622}
   - component: {fileID: 1566301809242902460}
   - component: {fileID: 5425939474542620591}
+  - component: {fileID: 1673680013199323779}
   m_Layer: 0
   m_Name: RightDrum
   m_TagString: RightDrum
@@ -287,6 +288,22 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 2.37, y: 0.89, z: 2.23}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!111 &1673680013199323779
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5298255609429422609}
+  m_Enabled: 0
+  serializedVersion: 3
+  m_Animation: {fileID: 7400000, guid: 5f028167c20eb3845bd44c82a7cb4195, type: 2}
+  m_Animations:
+  - {fileID: 7400000, guid: 5f028167c20eb3845bd44c82a7cb4195, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 1
+  m_AnimatePhysics: 0
+  m_CullingType: 0
 --- !u!1001 &9030691879454207095
 PrefabInstance:
   m_ObjectHideFlags: 0

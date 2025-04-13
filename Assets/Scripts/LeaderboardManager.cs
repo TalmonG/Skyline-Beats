@@ -18,15 +18,14 @@ public class PlayerData
     public int score;
 }
 
-// Wrapper class to help with JSON parsing
 [System.Serializable]
 public class LeaderboardDataWrapper
 {
     public string jsonData;
 
-    public LeaderboardData Parse()
+    public LeaderboardData Parse() // fake leaderboard data lmao (only for now, will make online soon)
     {
-        // Remove any BOM characters and normalize line endings
+        // remove any bom characters and normalize line endings
         jsonData = jsonData.Trim().Replace("\uFEFF", "");
         return JsonUtility.FromJson<LeaderboardData>(jsonData);
     }
@@ -42,19 +41,13 @@ public class LeaderboardManager : MonoBehaviour
 
     void Start()
     {
-        // Verify container is set
+        // verify container is set
         if (leaderboardContainer == null)
         {
             Debug.LogError("Leaderboard Container is not assigned! Please assign the Content object of the ScrollView in the inspector.");
             return;
         }
         LoadLeaderboard();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 
     private void LoadLeaderboard()
@@ -76,7 +69,7 @@ public class LeaderboardManager : MonoBehaviour
             //Debug.Log("Reading JSON file");
             string jsonData = File.ReadAllText(filePath);
             
-            // Create wrapper and parse
+            // create wrapper and parse
             var wrapper = new LeaderboardDataWrapper { jsonData = jsonData };
             var leaderboardData = wrapper.Parse();
 
@@ -88,33 +81,33 @@ public class LeaderboardManager : MonoBehaviour
 
             //Debug.Log($"Number of players loaded: {leaderboardData.players.Count}");
 
-            // Sort players by score
+            // sort players by score
             var sortedPlayers = leaderboardData.players
                 .OrderByDescending(player => player.score)
                 .ToList();
 
            // Debug.Log($"Number of sorted players: {sortedPlayers.Count}");
 
-            // Verify components
-            if (leaderboardTemplate == null)
-            {
-                Debug.LogError("Leaderboard template is null!");
-                return;
-            }
+            // verify components
+            // if (leaderboardTemplate == null)
+            // {
+            //     Debug.LogError("Leaderboard template is null!");
+            //     return;
+            // }
 
-            if (leaderboardContainer == null)
-            {
-                Debug.LogError("Leaderboard container is null!");
-                return;
-            }
+            // if (leaderboardContainer == null)
+            // {
+            //     Debug.LogError("Leaderboard container is null!");
+            //     return;
+            // }
 
-            // Clear existing entries
+            // clear existing entries
             //Debug.Log("Clearing existing entries");
             foreach (Transform child in leaderboardContainer.transform) {
                 Destroy(child.gameObject);
             }
 
-            // Create leaderboard entries
+            // create leaderboard entries
             //Debug.Log("Creating new entries");
             for (int i = 0; i < sortedPlayers.Count; i++)
             {
@@ -124,15 +117,15 @@ public class LeaderboardManager : MonoBehaviour
                 GameObject leaderboardEntry = Instantiate(leaderboardTemplate, leaderboardContainer.transform);
                 leaderboardEntry.SetActive(true);
                 
-                // Find all TextMeshProUGUI components in the children's children
+                // find all TextMeshProUGUI components in the children's children
                 TextMeshProUGUI rankText = null;
                 TextMeshProUGUI nameText = null;
                 TextMeshProUGUI scoreText = null;
 
-                // Loop through each child GameObject
+                // loop child gameobject
                 foreach (Transform child in leaderboardEntry.transform)
                 {
-                    // Get the TextMeshProUGUI from the child's child
+                    // get TextMesh from childs child
                     var text = child.GetComponentInChildren<TextMeshProUGUI>();
                     if (text != null)
                     {
@@ -168,7 +161,7 @@ public class LeaderboardManager : MonoBehaviour
         }
     }
 
-    // Helper method to list all tags in the hierarchy
+    // helper method list all tags in hierarchy
     private string[] GetChildTags(Transform parent)
     {
         List<string> tags = new List<string>();

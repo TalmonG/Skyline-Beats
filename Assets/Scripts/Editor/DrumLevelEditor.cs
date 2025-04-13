@@ -2,14 +2,15 @@ using UnityEngine;
 using UnityEditor;
 
 [CustomEditor(typeof(NoteSpawner))]
-public class DrumLevelEditor : Editor
+public class DrumLevelEditor : Editor // note to self: never doing editor again
 {
+    // variables
     private int selectedRow = -1;
     private int selectedCol = -1;
     private bool isRightDrum = false;
     private string minutesInput = "0";
     private string secondsInput = "0";
-    private bool showGridPositions = false;  // Single foldout state for all grid positions
+    private bool showGridPositions = false;
     private bool showDeathZoneSettings = false;
     private string[] availableSongs;
     private int selectedSongIndex = -1;
@@ -19,6 +20,7 @@ public class DrumLevelEditor : Editor
         RefreshSongList();
     }
 
+    // flipping resets the song list
     private void RefreshSongList()
     {
         NoteSpawner spawner = (NoteSpawner)target;
@@ -26,6 +28,7 @@ public class DrumLevelEditor : Editor
         selectedSongIndex = System.Array.IndexOf(availableSongs, spawner.levelName);
     }
 
+    // convert time to seconds
     private float ParseTimeInput(string minutes, string seconds)
     {
         float totalSeconds = 0f;
@@ -40,19 +43,23 @@ public class DrumLevelEditor : Editor
         return totalSeconds;
     }
 
+    // convert seconds to minutes
     private void TimeFromSeconds(float totalSeconds, out string minutes, out string seconds)
     {
         int mins = Mathf.FloorToInt(totalSeconds / 60f);
         float secs = totalSeconds % 60f;
         minutes = mins.ToString();
         seconds = secs.ToString("F2");
+        //Debug.Log("bing");
     }
 
+    // omfg this took way too long but working
     public override void OnInspectorGUI()
     {
+        //Debug.Log("start");
         NoteSpawner spawner = (NoteSpawner)target;
         
-        // Song Selection
+        // song selection
         EditorGUILayout.Space(10);
         EditorGUILayout.LabelField("Song Selection", EditorStyles.boldLabel);
         
@@ -63,6 +70,7 @@ public class DrumLevelEditor : Editor
             {
                 selectedSongIndex = newSelectedIndex;
                 spawner.LoadLevel(availableSongs[selectedSongIndex]);
+                //Debug.Log("A");
             }
         }
 
@@ -77,7 +85,7 @@ public class DrumLevelEditor : Editor
 
         EditorGUILayout.Space(10);
 
-        // Grid visualization toggle
+        // grid visual toggle
         EditorGUI.BeginChangeCheck();
         bool showGrid = EditorGUILayout.Toggle("Show Grid in Scene", spawner.showGridGizmos);
         if (EditorGUI.EndChangeCheck())
@@ -86,7 +94,7 @@ public class DrumLevelEditor : Editor
             SceneView.RepaintAll();
         }
 
-        // Death zone visualization toggle and settings
+        // death zone visual toggle and settings
         EditorGUI.BeginChangeCheck();
         bool showDeathZone = EditorGUILayout.Toggle("Show Death Zone in Scene", spawner.showDeathZone);
         if (EditorGUI.EndChangeCheck())
@@ -117,7 +125,7 @@ public class DrumLevelEditor : Editor
             EditorGUI.indentLevel--;
         }
 
-        // Grid Positions Editor
+        // grid positions editor
         showGridPositions = EditorGUILayout.Foldout(showGridPositions, "Grid Positions", true);
         if (showGridPositions)
         {
@@ -178,7 +186,7 @@ public class DrumLevelEditor : Editor
 
         EditorGUILayout.Space(10);
 
-        // Draw default inspector excluding the grid
+        // draw default inspector excluding grid
         serializedObject.Update();
         DrawPropertiesExcluding(serializedObject, "gridRows");
         serializedObject.ApplyModifiedProperties();
@@ -188,7 +196,7 @@ public class DrumLevelEditor : Editor
         EditorGUILayout.Space(10);
         EditorGUILayout.LabelField("Note Placement", EditorStyles.boldLabel);
 
-        // Grid selection
+        // grid selection
         EditorGUILayout.LabelField("Grid Selection (Green = Selected)");
         for (int row = 3; row >= 0; row--)
         {
@@ -208,10 +216,10 @@ public class DrumLevelEditor : Editor
 
         EditorGUILayout.Space(10);
         
-        // Drum type toggle
+        // drum type toggle
         isRightDrum = EditorGUILayout.Toggle("Right Drum", isRightDrum);
 
-        // Note Timing Input (right after drum type)
+        // note timing input (right after drum type)
         EditorGUILayout.BeginHorizontal();
         EditorGUILayout.LabelField("Time (mm:ss)", GUILayout.Width(100));
         minutesInput = EditorGUILayout.TextField(minutesInput, GUILayout.Width(30));
@@ -223,7 +231,7 @@ public class DrumLevelEditor : Editor
 
         EditorGUILayout.Space(5);
 
-        // Add note button
+        // add note button
         GUI.enabled = selectedRow != -1 && selectedCol != -1;
         if (GUILayout.Button("Add Note"))
         {
@@ -233,7 +241,7 @@ public class DrumLevelEditor : Editor
 
         EditorGUILayout.Space(10);
 
-        // Display current notes
+        // display current notes
         EditorGUILayout.LabelField("Current Notes", EditorStyles.boldLabel);
         foreach (var note in spawner.noteDataList)
         {
@@ -257,7 +265,7 @@ public class DrumLevelEditor : Editor
             Repaint();
         }
 
-        // Add save button at the bottom
+        // add save button at bottom
         EditorGUILayout.Space(10);
         if (GUILayout.Button("Save Level"))
         {

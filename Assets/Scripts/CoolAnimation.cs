@@ -4,17 +4,18 @@ using UnityEngine;
 
 public class CoolAnimation : MonoBehaviour
 {
-    public GameObject cubePrefab; // Single cube prefab
-    public int numberOfCubes = 15; // Number of cubes to create
-    public float spacing = 2f; // Space between each cube
-    public Vector3 startPosition = Vector3.zero; // Starting position for first cube
-    private GameObject[] cubes; // Array to store instantiated cubes
-    public float delayBetweenCubes = 0.1f; // Delay before starting next cube
-    public float rotationDuration = 1f; // How long each cube rotates
+    // references
+    public GameObject cubePrefab; 
+    public int numberOfCubes = 15; 
+    public float spacing = 2f; 
+    public Vector3 startPosition = Vector3.zero; 
+    private GameObject[] cubes; 
+    public float delayBetweenCubes = 0.1f; 
+    public float rotationDuration = 1f; 
 
     void Start()
     {
-        // Create and position cubes
+        // create and position cubes
         cubes = new GameObject[numberOfCubes];
         
         for (int i = 0; i < numberOfCubes; i++)
@@ -28,7 +29,7 @@ public class CoolAnimation : MonoBehaviour
 
     IEnumerator AnimateCubes()
     {
-        // Forward rotation
+        // forward rotation
         List<Coroutine> rotations = new List<Coroutine>();
         for (int i = 0; i < cubes.Length; i++)
         {
@@ -36,13 +37,13 @@ public class CoolAnimation : MonoBehaviour
             yield return new WaitForSeconds(delayBetweenCubes);
         }
 
-        // Wait for all rotations to complete
+        // wait rotations to complete
         foreach (var rotation in rotations)
         {
             yield return rotation;
         }
 
-        // Reverse rotation
+        // reverse rotation
         rotations.Clear();
         for (int i = 0; i < cubes.Length; i++)
         {
@@ -50,11 +51,12 @@ public class CoolAnimation : MonoBehaviour
             yield return new WaitForSeconds(delayBetweenCubes);
         }
 
-        // Wait for all reverse rotations to complete
+        // wait reverse rotations to complete
         foreach (var rotation in rotations)
         {
             yield return rotation;
         }
+        //Debug.Log("anim done");
     }
 
     IEnumerator RotateCube(GameObject cube, float targetRotation)
@@ -71,7 +73,7 @@ public class CoolAnimation : MonoBehaviour
             yield return null;
         }
 
-        // Ensure final rotation is exact
         cube.transform.rotation = Quaternion.Euler(0, 0, endRotation);
+        //Debug.Log("helo");
     }
 }

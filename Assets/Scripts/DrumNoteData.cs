@@ -1,6 +1,7 @@
 using UnityEngine;
 using System;
 
+// DO NOT TOUCH THIS CODE OR EVERYTHING WILL BREAK `^`
 [System.Serializable]
 public class DrumNoteData
 {

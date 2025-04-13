@@ -4,12 +4,12 @@ using System.Collections.Generic;
 public class NoteSpawner : MonoBehaviour
 {
     [System.Serializable]
-    public class GridPosition
+    public class GridPosition // this works dont touch
     {
         public Vector3 position;
         public Vector3 rotation;
 
-        public GridPosition(Vector3 pos, Vector3 rot)
+        public GridPosition(Vector3 pos, Vector3 rot) // this works dont touch
         {
             position = pos;
             rotation = rot;
@@ -17,7 +17,7 @@ public class NoteSpawner : MonoBehaviour
     }
 
     [System.Serializable]
-    public class GridRow
+    public class GridRow // this works dont touch
     {
         public GridPosition[] columns = new GridPosition[5];
     }
@@ -45,8 +45,8 @@ public class NoteSpawner : MonoBehaviour
     private SongManager songManager;
 
     [Header("Note Timing Settings")]
-    public float noteSpawnOffset = 2f; // How many seconds before the beat to spawn the note
-    public float noteSpawnDistance = 30f; // How far up in Z axis to spawn the note
+    public float noteSpawnOffset = 2f; 
+    public float noteSpawnDistance = 30f;
 
     private GameManager gameManager;
 
@@ -86,9 +86,9 @@ public class NoteSpawner : MonoBehaviour
             }
         }
 
-        if (needsInitialization)
+        if (needsInitialization) // good
         {
-            float startX = -2f;
+            float startX = -2f; 
             float startY = 1f;
             float spacingX = 1f;
             float spacingY = 1f;
@@ -118,7 +118,7 @@ public class NoteSpawner : MonoBehaviour
             {
                 float currentTime = songManager.GetCurrentSongTime();
             
-                // Spawn notes ahead of time using noteSpawnOffset
+                // spawn notes ahead of time
                 while (noteDataList.Count > 0 && currentTime >= noteDataList[0].timing - noteSpawnOffset)
                 {
                     var noteData = noteDataList[0];
@@ -127,7 +127,7 @@ public class NoteSpawner : MonoBehaviour
                 }
             }
             
-            // Check if all notes have been spawned and processed
+            // check if all notes have been spawned and processed
             if (noteDataList.Count == 0 && FindObjectsOfType<DrumNote>().Length == 0 && randomBoolOne == false)
             {
                 gameManager.LevelComplete();
@@ -160,15 +160,16 @@ public class NoteSpawner : MonoBehaviour
         Vector3 targetPos = gridPosition;
         targetPos.z = deathZonePosition.z - spawnDistance;
 
-        // Use the grid's rotation directly
+        // use grids rotation
         GameObject noteObj = Instantiate(prefab, spawnPos, gridRotation);
         DrumNote note = noteObj.AddComponent<DrumNote>();
         note.isRightDrum = isRightDrum;
         note.targetPosition = targetPos;
         
-        // Calculate speed based on distance and time to reach grid
+        // calculate speed based on distance and time to reach grid (probably works)
         float distanceToGrid = noteSpawnDistance;
         note.speed = distanceToGrid / noteSpawnOffset;
+        //Debug.Log("done");
     }
 
     public void AddNote(float timing, int row, int col, bool isRightDrum)
@@ -185,8 +186,9 @@ public class NoteSpawner : MonoBehaviour
         noteDataList.Sort((a, b) => a.timing.CompareTo(b.timing));
         lastAddedNote = newNote;
         
-        // Auto-save when note is added
+        // auto-save when note added
         SaveLevel();
+        //Debug.Log("done");
     }
 
     public void SaveLevel()
@@ -198,6 +200,7 @@ public class NoteSpawner : MonoBehaviour
         };
 
         SongFileHandler.SaveLevel(levelName, levelData);
+        //Debug.Log("done");
     }
 
     public void LoadLevel(string songName = null)
@@ -210,11 +213,11 @@ public class NoteSpawner : MonoBehaviour
         LevelData levelData = SongFileHandler.LoadLevel(levelName);
         if (levelData != null)
         {
-            // Store in original list and sort
+            // store in original list and sort
             originalNoteList = new List<DrumNoteData>(levelData.notes);
             originalNoteList.Sort((a, b) => a.timing.CompareTo(b.timing));
             
-            // Initialize spawn list
+            // initialize spawn list
             ResetNoteSpawnList();
             
             Debug.Log($"Loaded {originalNoteList.Count} notes for song: {levelName}");
@@ -225,24 +228,27 @@ public class NoteSpawner : MonoBehaviour
             noteDataList.Clear();
             Debug.Log($"No existing data found for song: {levelName}");
         }
+        //Debug.Log("done again");
     }
 
     public void ResetNoteSpawnList()
     {
-        // Create a new spawn list from the original data
+        // create new spawn list from original data
         noteDataList = new List<DrumNoteData>(originalNoteList);
     }
 
-    // Get all available songs
+    // get available songs useless for now, needs more songs
     public string[] GetAvailableSongs()
     {
         return SongFileHandler.GetAllLevelNames();
+        //Debug.Log("got");
     }
 
     public void ClearNotes()
     {
         noteDataList.Clear();
         SaveLevel();
+        //Debug.Log("cleared");
     }
 
     private void OnDrawGizmos()
@@ -263,19 +269,19 @@ public class NoteSpawner : MonoBehaviour
                         Vector3 pos = gridRows[row].columns[col].position;
                         Quaternion rot = Quaternion.Euler(gridRows[row].columns[col].rotation);
                         
-                        // Draw the grid cube
+                        // draw grid cube
                         Gizmos.color = Color.green;
                         Gizmos.matrix = Matrix4x4.TRS(pos, rot, Vector3.one);
                         Gizmos.DrawWireCube(Vector3.zero, Vector3.one * gizmoSize);
                         
-                        // Draw simple forward line
+                        // draw forward line
                         Gizmos.color = Color.magenta;
                         Gizmos.DrawLine(Vector3.zero, Vector3.forward * gizmoSize);
                     }
                 }
             }
             
-            // Reset Gizmos matrix
+            // reset gizmos matrix
             Gizmos.matrix = Matrix4x4.identity;
         }
 
@@ -285,9 +291,7 @@ public class NoteSpawner : MonoBehaviour
             Gizmos.DrawWireCube(deathZonePosition, deathZoneSize);
         }
 
-        if (lastAddedNote != null && 
-            lastAddedNote.row >= 0 && lastAddedNote.row < 4 && 
-            lastAddedNote.column >= 0 && lastAddedNote.column < 5)
+        if (lastAddedNote != null && lastAddedNote.row >= 0 && lastAddedNote.row < 4 && lastAddedNote.column >= 0 && lastAddedNote.column < 5)
         {
             Vector3 gridPos = gridRows[lastAddedNote.row].columns[lastAddedNote.column].position;
             
@@ -303,5 +307,6 @@ public class NoteSpawner : MonoBehaviour
             Gizmos.DrawWireSphere(targetPos, gizmoSize);
             Gizmos.DrawLine(spawnPos, targetPos);
         }
+        //Debug.Log("done gizzmosss");
     }
 }

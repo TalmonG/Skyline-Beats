@@ -17,10 +17,10 @@ public class DrumNote : MonoBehaviour
     {
         if (gameManager.shouldGameContinue)
         {
-            // Move note towards target position
+            // move note to target
             transform.position = Vector3.MoveTowards(transform.position, targetPosition, speed * Time.deltaTime);
             
-            // Get reference to NoteSpawner to check death zone
+            // check if note is in death zone
             NoteSpawner spawner = FindObjectOfType<NoteSpawner>();
             if (spawner != null && transform.position.z < spawner.deathZonePosition.z - 1f)
             {

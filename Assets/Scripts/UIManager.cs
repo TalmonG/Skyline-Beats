@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
+    // references
     private GameManager gameManager;
     private AudioManager audioManager;
 
@@ -28,21 +29,22 @@ public class UIManager : MonoBehaviour
         noteSpawner = FindObjectOfType<NoteSpawner>();
         songManager = FindObjectOfType<SongManager>();
 
-        // Find with tags
-        //canvasGroup = GameObject.FindGameObjectWithTag("CanvasGroup"); // could use but i like controlling all canvas seperately
+        // find tags
+        //canvasGroup = GameObject.FindGameObjectWithTag("CanvasGroup"); // dont need, delete when done
         levelSelectorCanvas = GameObject.FindGameObjectWithTag("LevelSelectorCanvas");
         howToPlayCanvas = GameObject.FindGameObjectWithTag("HowToPlayCanvas");
         leaderboardCanvas = GameObject.FindGameObjectWithTag("LeaderboardCanvas");
         levelCompleteCanvas = GameObject.FindGameObjectWithTag("LevelCompleteCanvas");
         levelFailedCanvas = GameObject.FindGameObjectWithTag("LevelFailedCanvas");
 
+        // set active
         levelSelectorCanvas.SetActive(true);
         howToPlayCanvas.SetActive(true);
         leaderboardCanvas.SetActive(true);
         levelCompleteCanvas.SetActive(false);
         levelFailedCanvas.SetActive(false);
 
-        // Initialize slider
+        // add slider
         if (songPositionSlider != null && songManager != null && songManager.musicSource.clip != null)
         {
             songPositionSlider.minValue = 0f;
@@ -75,6 +77,7 @@ public class UIManager : MonoBehaviour
         
         noteSpawner.randomBoolOne = false;
         gameManager.StartGame();
+        //Debug.Log("play pressed");
     }
 
     public void EnableLevelSelectorCanvas()

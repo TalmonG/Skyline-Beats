@@ -10,7 +10,6 @@ public class AudioManager : MonoBehaviour
 
     void Awake()
     {
-        // Singleton pattern
         if (instance == null)
             instance = this;
         else
@@ -21,7 +20,6 @@ public class AudioManager : MonoBehaviour
         
         DontDestroyOnLoad(gameObject);
 
-        // Create AudioSource for each sound
         foreach (Sound s in sounds)
         {
             s.source = gameObject.AddComponent<AudioSource>();

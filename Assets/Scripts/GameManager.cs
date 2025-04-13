@@ -29,7 +29,7 @@ public class GameManager : MonoBehaviour
     private TextMeshPro multiplierText;
 
     [SerializeField]
-    private TextMeshProUGUI scoreLevelCompleteText; // Keep it private but visible in Inspector    
+    private TextMeshProUGUI scoreLevelCompleteText;
     [SerializeField]
     private TextMeshProUGUI maxComboLevelCompleteText;
 
@@ -42,7 +42,7 @@ public class GameManager : MonoBehaviour
         songManager = FindObjectOfType<SongManager>();
         audioManager = FindObjectOfType<AudioManager>();
         uIManager = FindObjectOfType<UIManager>();
-        // Try to find texts if not assigned in inspector
+        
         if (scoreText == null)
             scoreText = GameObject.FindGameObjectWithTag("ScoreText")?.GetComponent<TextMeshPro>();
         if (livesText == null) 
@@ -68,13 +68,12 @@ public class GameManager : MonoBehaviour
             Debug.LogError("Could not find score or lives text components!");
             return;
         }
-        // Initialize UI
+        // start ui text
         scoreText.text = "" + score;
         livesText.text = "Lives: " + lives;
         comboText.text = "Combo\n" + combo;
         multiplierText.text = "X" + multiplier;
 
-        // Find and initialize toggle state
         Toggle invincibilityToggle = GameObject.FindObjectOfType<Toggle>();
         if (invincibilityToggle != null)
         {
@@ -90,9 +89,10 @@ public class GameManager : MonoBehaviour
             isGameStarted = true;
 
             StartGame();
+            //Debug.Log("yummers");
         }
 
-        if (lives <= 0 && isGameResetting == false) // Player loses
+        if (lives <= 0 && isGameResetting == false) // player loses
         {
             Debug.Log("Game Over");
             shouldGameContinue = false;
@@ -100,13 +100,14 @@ public class GameManager : MonoBehaviour
             songManager.SuddenStopSong();
             audioManager.Play("PowerDown");
             GameOver();
+            //Debug.Log("womp womp 2");
         }
 
     }
 
     public void LevelComplete()
     {
-        //isLevelComplete = true; // Useless for now but might be useful in future
+        //isLevelComplete = true; // useless for now but might be useful in future
         // coming from noteSpawner script
         uIManager.EnableLevelCompleteCanvas();
         songManager.FadeOutSong();
@@ -124,14 +125,15 @@ public class GameManager : MonoBehaviour
     {
         Debug.Log("Game Over");
         songManager.FadeOutSong();
-        // TODO: Add game over screen
+        // note to self: add game over screen here
         uIManager.EnableLevelFailedCanvas();
         //ResetGame();
     }
 
-    public void ResetGame()
+    public void ResetGame() // dont touch this code
     {
-        // Destroy all existing DrumNote objects in the scene
+        //Debug.Log("Resetting");
+        // destroy existing DrumNote objects in scene
         DrumNote[] existingNotes = FindObjectsOfType<DrumNote>();
         foreach (DrumNote note in existingNotes)
         {
@@ -148,11 +150,11 @@ public class GameManager : MonoBehaviour
         combo = 0;
         multiplier = 1;
         multiplierCounter = 0;
-        shouldGameContinue = false;  // Changed from true to false
-        isGameResetting = false;
-        isGameStarted = false;       // Added this line
-        STARTGAME = false;          // Added this line
-        isInvincible = false;  // Also reset invincibility when game resets
+        shouldGameContinue = false;  // I AM CHANGING THIS TO FALSE
+        isGameResetting = false;  // I AM CHANGING THIS TO FALSE
+        isGameStarted = false;       // I AM CHANGING THIS TO FALSE
+        STARTGAME = false;          // I AM CHANGING THIS TO FALSE
+        isInvincible = false;  // I AM CHANGING THIS TO FALSE
 
         scoreText.text = "" + score;
         livesText.text = "Lives: " + lives;
@@ -160,10 +162,10 @@ public class GameManager : MonoBehaviour
         multiplierText.text = "X" + multiplier;
         multiplierText.color = new Color32(255, 255, 255, 255);
 
-        Debug.Log("Game Reset");
+        //Debug.Log("Game Reset");
     }
 
-    public void UpdateCombo(string status)
+    public void UpdateCombo(string status) // done
     {
         switch(status)
         {
@@ -176,7 +178,7 @@ public class GameManager : MonoBehaviour
         }
         comboText.text = "" + combo;
     }
-    public void UpdateMultiplier(string status)
+    public void UpdateMultiplier(string status) // done maybe change colors
     {
         switch(status)
         {
@@ -208,7 +210,7 @@ public class GameManager : MonoBehaviour
         multiplierText.text = "X" + multiplier;
     }
 
-    public void AddScore()
+    public void AddScore() // done
     {
 
         score += multiplier;
@@ -216,7 +218,7 @@ public class GameManager : MonoBehaviour
             scoreText.text = "Score: " + score;
     }
 
-    public void LoseLife()
+    public void LoseLife() // done
     {
         if (isInvincible) return;
         
@@ -229,7 +231,7 @@ public class GameManager : MonoBehaviour
     }
 
 
-    public void AddLife()
+    public void AddLife() // done
     {
         if (lives < 3)  
         {
@@ -239,7 +241,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void ToggleInvincibility(bool value)
+    public void ToggleInvincibility(bool value) // done
     {
         isInvincible = value;
         Debug.Log($"Invincibility {(value ? "enabled" : "disabled")}");

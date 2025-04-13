@@ -19,26 +19,20 @@ public class DrumStick : MonoBehaviour
         gameManager = FindObjectOfType<GameManager>();
         particleManager = FindObjectOfType<ParticleManager>();
 
-        // Make sure there's a collider component
         Collider col = GetComponent<Collider>();
         if (col == null)
         {
-
-            // Add a box collider if none exists
             col = gameObject.AddComponent<BoxCollider>();
         }
 
-        // Enable trigger for smoother collision detection
         col.isTrigger = true;
 
-        // Make sure there's a rigidbody for physics
         Rigidbody rb = GetComponent<Rigidbody>();
         if (rb == null)
         {
             rb = gameObject.AddComponent<Rigidbody>();
         }
 
-        // Set rigidbody to kinematic since it's controlled by VR
         rb.isKinematic = true;
     }
 
@@ -54,7 +48,7 @@ public class DrumStick : MonoBehaviour
 
         if (isLeftDrumStick)
         {
-            if (other.CompareTag("LeftDrum")) // Left hit
+            if (other.CompareTag("LeftDrum")) // left hit
             {
                 Vector3 effectPosition = other.gameObject.transform.position;
                 effectPosition.y += 0.1f;
@@ -70,7 +64,7 @@ public class DrumStick : MonoBehaviour
         }
         if (isLeftDrumStick == false)
         {
-            if (other.CompareTag("RightDrum")) // Right hit
+            if (other.CompareTag("RightDrum")) // right hit
             {
                 Vector3 effectPosition = other.gameObject.transform.position ;
                 effectPosition.y += 0.1f;
@@ -87,9 +81,9 @@ public class DrumStick : MonoBehaviour
 
         if (isLeftDrumStick == false)
         {
-            if (other.CompareTag("LeftDrum")) // Right wrong hit
+            if (other.CompareTag("LeftDrum")) // right wrong hit
             {
-                // Vibrate right controller using XRI
+                // vibrate right controller using xri
                 UnityEngine.XR.InputDevice device = InputDevices.GetDeviceAtXRNode(XRNode.RightHand);
                 device.SendHapticImpulse(0, 0.5f, 0.1f);
                 gameManager.LoseLife();
@@ -101,9 +95,9 @@ public class DrumStick : MonoBehaviour
 
         if (isLeftDrumStick == true)
         {
-            if (other.CompareTag("RightDrum")) // Left wrong hit
+            if (other.CompareTag("RightDrum")) // left wrong hit
             {
-                // Vibrate right controller using XRI
+                // vibrate right controller using xri
                 UnityEngine.XR.InputDevice device = InputDevices.GetDeviceAtXRNode(XRNode.LeftHand);
                 device.SendHapticImpulse(0, 0.5f, 0.1f);
                 gameManager.LoseLife();

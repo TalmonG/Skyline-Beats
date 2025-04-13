@@ -2,7 +2,7 @@ using UnityEngine;
 using System.IO;
 using System.Collections.Generic;
 
-public static class SongFileHandler
+public static class SongFileHandler // DO NOT TOUCH THIS CODE OR EVERYTHING WILL BREAK
 {
     private static readonly string LEVELS_DIRECTORY = "Levels";
     private static readonly string FILE_EXTENSION = ".json";
@@ -15,7 +15,7 @@ public static class SongFileHandler
             Directory.CreateDirectory(directory);
         }
 
-        string json = JsonUtility.ToJson(levelData, true); // true for pretty print
+        string json = JsonUtility.ToJson(levelData, true); 
         string filePath = Path.Combine(directory, levelName + FILE_EXTENSION);
         File.WriteAllText(filePath, json);
 

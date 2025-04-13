@@ -4,22 +4,9 @@ using UnityEngine;
 
 public class ParticleManager : MonoBehaviour
 {
-
     public GameObject cirlceBoom;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-    public void SpawnParticleEffect(string effectName, Vector3 position, Quaternion rotation)
+    public void SpawnParticleEffect(string effectName, Vector3 position, Quaternion rotation) // WORKS
     {
         GameObject particlePrefab;
         

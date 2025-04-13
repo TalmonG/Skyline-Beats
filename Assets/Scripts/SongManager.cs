@@ -12,11 +12,11 @@ public class SongManager : MonoBehaviour
     private AudioManager audioManager;
 
     [Header("Time Control")]
-    public float skipAmount = 5f; // Amount of seconds to skip forward/backward
+    public float skipAmount = 5f;
     public KeyCode skipForwardKey = KeyCode.RightArrow;
     public KeyCode skipBackwardKey = KeyCode.LeftArrow;
 
-    // Add reference to NoteSpawner
+    // references
     private NoteSpawner noteSpawner;
 
     void Start()
@@ -27,14 +27,13 @@ public class SongManager : MonoBehaviour
 
     void Update()
     {
-        if (!isSongPlaying) return;
+        if (!isSongPlaying) return; // cancel if song not playing
 
-        // Handle time control input
-        if (Input.GetKeyDown(skipForwardKey))
+        if (Input.GetKeyDown(skipForwardKey)) // skip forward
         {
             SkipForward();
         }
-        else if (Input.GetKeyDown(skipBackwardKey))
+        else if (Input.GetKeyDown(skipBackwardKey)) // skip backward
         {
             SkipBackward();
         }
@@ -43,15 +42,15 @@ public class SongManager : MonoBehaviour
     public void ResetSong()
     {
         musicSource.Stop();
-        musicSource.time = 0;  // Reset the song position to start
+        musicSource.time = 0;  
         isSongPlaying = false;
-        musicSource.volume = 1f;  // Reset volume in case it was faded out
+        musicSource.volume = 1f; 
     }
 
     public void StartSong()
     {
-        ResetSong();  // Add this line to ensure clean state
-        Invoke(nameof(PlayMusic), songStartDelay);
+        ResetSong();  // just incase
+        Invoke(nameof(PlayMusic), songStartDelay); // just gonna have 1 song for now but this can be used for multiple
     }
 
     private void PlayMusic()
@@ -71,10 +70,10 @@ public class SongManager : MonoBehaviour
         StartCoroutine(FadeOutSongIEnumerator());
     }
 
-    // dont use this directly, only use FadeOutSong()
+    // dont use directly, only use FadeOutSong()
     public IEnumerator FadeOutSongIEnumerator()
     {
-        // fade the song out over 2 seconds WITHOUT using DOFade
+        // fade song over 2 seconds
         float startVolume = musicSource.volume;
         float elapsedTime = 0f;
         while (elapsedTime < 2f)
@@ -86,31 +85,33 @@ public class SongManager : MonoBehaviour
         musicSource.Stop();
         audioManager.Play("LevelComplete");
         isSongPlaying = false;
+        //Debug.Log("done");
     }
 
     public float GetCurrentSongTime()
     {
         if (!isSongPlaying)
-            return float.MinValue;  // Return a very low value to prevent note spawning before song starts
+            return float.MinValue;
         return currentSongTime;
     }
 
     public void SkipForward()
     {
         float newTime = Mathf.Clamp(musicSource.time + skipAmount, 0f, musicSource.clip.length);
-        Debug.Log($"Skipping forward from {musicSource.time:F2}s to {newTime:F2}s");
+        //Debug.Log($"Skipping forward from {musicSource.time:F2}s to {newTime:F2}s");
         musicSource.time = newTime;
         
         if (noteSpawner != null)
         {
             CleanupAndResetNotes();
         }
+        //Debug.Log("SKIPPEDDDDDD");
     }
 
     public void SkipBackward()
     {
         float newTime = Mathf.Clamp(musicSource.time - skipAmount, 0f, musicSource.clip.length);
-        Debug.Log($"Skipping backward from {musicSource.time:F2}s to {newTime:F2}s");
+        //Debug.Log($"Skipping backward from {musicSource.time:F2}s to {newTime:F2}s");
         musicSource.time = newTime;
         
         if (noteSpawner != null)
@@ -121,14 +122,14 @@ public class SongManager : MonoBehaviour
 
     private void CleanupAndResetNotes()
     {
-        // Destroy all existing notes
+        // destroy all notes
         DrumNote[] existingNotes = FindObjectsOfType<DrumNote>();
         foreach (DrumNote note in existingNotes)
         {
             Destroy(note.gameObject);
         }
         
-        // Reset the spawn list
+        // reset note spawn list
         noteSpawner.ResetNoteSpawnList();
     }
 }

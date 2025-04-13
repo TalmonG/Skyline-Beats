@@ -55,8 +55,8 @@ Material:
     - _Noise_Scale: 0.02
     - _Noise_Speed: 30
     m_Colors:
-    - _Color_Peak: {r: 0.98039216, g: 0.61960787, b: 0.34901962, a: 1}
-    - _Color_Valley: {r: 0.7264151, g: 0, b: 0.065180376, a: 1}
+    - _Color_Peak: {r: 0, g: 0.63702816, b: 0.8207547, a: 1}
+    - _Color_Valley: {r: 0.39101994, g: 0.5728308, b: 0.8207547, a: 1}
     - _Noise_Remap: {r: 0, g: 1, b: 1, a: 2.7}
     - _Rotate_Projection: {r: 1, g: 0, b: 0, a: 90}
   m_BuildTextureStacks: []

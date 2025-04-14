@@ -11961,7 +11961,7 @@ MonoBehaviour:
   leftDrumPrefab: {fileID: 7016734768772664437, guid: a45e0eaa509ae47f6ba515fd7708d413, type: 3}
   rightDrumPrefab: {fileID: 5298255609429422609, guid: 9c8764fe3e24340c496380e2331d73b9, type: 3}
   spawnDistance: 20
-  levelName: Seanyy - Ocean
+  levelName: HardStandard
   noteDataList:
   - timing: 1.9
     row: 0

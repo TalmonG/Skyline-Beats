@@ -52,6 +52,8 @@ public class NoteSpawner : MonoBehaviour
 
     public bool randomBoolOne = false;
     
+    private int lastLoggedTime = -1;
+
     void OnEnable()
     {
         InitializeGridPositions();
@@ -117,6 +119,13 @@ public class NoteSpawner : MonoBehaviour
             if (songManager != null && noteDataList.Count > 0)
             {
                 float currentTime = songManager.GetCurrentSongTime();
+                
+                // Only log every 5 seconds
+                if (Mathf.FloorToInt(currentTime) % 5 == 0 && Mathf.FloorToInt(currentTime) != lastLoggedTime)
+                {
+                    lastLoggedTime = Mathf.FloorToInt(currentTime);
+                    Debug.Log($"Current time: {currentTime:F2}, Next note time: {noteDataList[0].timing:F2}, Notes remaining: {noteDataList.Count}");
+                }
             
                 // spawn notes ahead of time
                 while (noteDataList.Count > 0 && currentTime >= noteDataList[0].timing - noteSpawnOffset)
@@ -125,6 +134,13 @@ public class NoteSpawner : MonoBehaviour
                     SpawnNote(noteData.row, noteData.column, noteData.isRightDrum);
                     noteDataList.RemoveAt(0);
                 }
+            }
+            else
+            {
+                if (songManager == null)
+                    Debug.LogWarning("SongManager is null");
+                if (noteDataList.Count == 0)
+                    Debug.LogWarning("No notes in noteDataList");
             }
             
             // check if all notes have been spawned and processed

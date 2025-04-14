@@ -63,7 +63,41 @@ public class NoteSpawner : MonoBehaviour
     {
         songManager = FindObjectOfType<SongManager>();
         gameManager = FindObjectOfType<GameManager>();
-        //LoadLevel();
+        Debug.Log("NoteSpawner Start: Loading level...");
+        LoadLevel(); // Load level immediately on start
+    }
+
+    void Update()
+    {
+        if (songManager == null || noteDataList == null || noteDataList.Count == 0)
+        {
+            return;
+        }
+
+        float currentTime = songManager.GetCurrentSongTime();
+        if (currentTime == float.MinValue) return; // Song not playing
+        
+        // Log current time every 5 seconds for debugging
+        int currentSecond = Mathf.FloorToInt(currentTime);
+        if (currentSecond % 5 == 0 && currentSecond != lastLoggedTime)
+        {
+            lastLoggedTime = currentSecond;
+            Debug.Log($"Current song time: {currentTime:F2}s, Next note at: {noteDataList[0].timing:F2}s");
+        }
+
+        // Spawn notes ahead of time based on current song time
+        while (noteDataList.Count > 0 && noteDataList[0].timing <= currentTime + noteSpawnOffset)
+        {
+            var noteData = noteDataList[0];
+            SpawnNote(noteData.row, noteData.column, noteData.isRightDrum);
+            noteDataList.RemoveAt(0);
+        }
+
+        // Check if all notes have been spawned and processed
+        if (noteDataList.Count == 0 && currentTime >= songManager.musicSource.clip.length - 5f)
+        {
+            gameManager.LevelComplete();
+        }
     }
 
     public void InitializeGridPositions()
@@ -112,46 +146,6 @@ public class NoteSpawner : MonoBehaviour
         }
     }
 
-    void Update()
-    {
-        if (gameManager.shouldGameContinue)
-        {
-            if (songManager != null && noteDataList.Count > 0)
-            {
-                float currentTime = songManager.GetCurrentSongTime();
-                
-                // Only log every 5 seconds
-                if (Mathf.FloorToInt(currentTime) % 5 == 0 && Mathf.FloorToInt(currentTime) != lastLoggedTime)
-                {
-                    lastLoggedTime = Mathf.FloorToInt(currentTime);
-                    Debug.Log($"Current time: {currentTime:F2}, Next note time: {noteDataList[0].timing:F2}, Notes remaining: {noteDataList.Count}");
-                }
-            
-                // spawn notes ahead of time
-                while (noteDataList.Count > 0 && currentTime >= noteDataList[0].timing - noteSpawnOffset)
-                {
-                    var noteData = noteDataList[0];
-                    SpawnNote(noteData.row, noteData.column, noteData.isRightDrum);
-                    noteDataList.RemoveAt(0);
-                }
-            }
-            else
-            {
-                if (songManager == null)
-                    Debug.LogWarning("SongManager is null");
-                if (noteDataList.Count == 0)
-                    Debug.LogWarning("No notes in noteDataList");
-            }
-            
-            // check if all notes have been spawned and processed
-            if (noteDataList.Count == 0 && FindObjectsOfType<DrumNote>().Length == 0 && randomBoolOne == false)
-            {
-                gameManager.LevelComplete();
-                randomBoolOne = true;
-            }
-        }
-    }
-
     public void SpawnNote(int row, int col, bool isRightDrum)
     {
         if (row < 0 || row >= 4 || col < 0 || col >= 5 || gridRows[row]?.columns[col] == null)
@@ -176,8 +170,15 @@ public class NoteSpawner : MonoBehaviour
         Vector3 targetPos = gridPosition;
         targetPos.z = deathZonePosition.z - spawnDistance;
 
-        // use grids rotation
-        GameObject noteObj = Instantiate(prefab, spawnPos, gridRotation);
+        // Get the note data for rotation
+        var noteData = noteDataList[0];
+        Quaternion noteRotation = Quaternion.Euler(noteData.rotation);
+
+        // Combine grid rotation with note rotation
+        Quaternion finalRotation = gridRotation * noteRotation;
+
+        // use combined rotation
+        GameObject noteObj = Instantiate(prefab, spawnPos, finalRotation);
         DrumNote note = noteObj.AddComponent<DrumNote>();
         note.isRightDrum = isRightDrum;
         note.targetPosition = targetPos;
@@ -185,7 +186,6 @@ public class NoteSpawner : MonoBehaviour
         // calculate speed based on distance and time to reach grid (probably works)
         float distanceToGrid = noteSpawnDistance;
         note.speed = distanceToGrid / noteSpawnOffset;
-        //Debug.Log("done");
     }
 
     public void AddNote(float timing, int row, int col, bool isRightDrum)
@@ -237,6 +237,9 @@ public class NoteSpawner : MonoBehaviour
             ResetNoteSpawnList();
             
             Debug.Log($"Loaded {originalNoteList.Count} notes for song: {levelName}");
+
+            // Save the level back to the file to ensure it's in the correct format
+            SaveLevel();
         }
         else
         {
@@ -244,7 +247,6 @@ public class NoteSpawner : MonoBehaviour
             noteDataList.Clear();
             Debug.Log($"No existing data found for song: {levelName}");
         }
-        //Debug.Log("done again");
     }
 
     public void ResetNoteSpawnList()

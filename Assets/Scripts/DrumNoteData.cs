@@ -9,6 +9,7 @@ public class DrumNoteData
     public int row;
     public int column;
     public bool isRightDrum;
+    public Vector3 rotation;
 }
 
 [System.Serializable]
@@ -16,4 +17,5 @@ public class LevelData
 {
     public string songName;
     public DrumNoteData[] notes;
-} 
+    public float songLength; // Length of the song in seconds
+}

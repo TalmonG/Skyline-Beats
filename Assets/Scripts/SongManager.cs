@@ -44,7 +44,7 @@ public class SongManager : MonoBehaviour
         musicSource.Stop();
         musicSource.time = 0;  
         isSongPlaying = false;
-        musicSource.volume = 1f; 
+        musicSource.volume = 0.1f; 
     }
 
     public void StartSong()

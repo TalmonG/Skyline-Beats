@@ -2055,9 +2055,9 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 568f21cb993c74f4d982714704d1b415, type: 3}
+  m_audioClip: {fileID: 8300000, guid: ba828cca91acc914591a7fd1f40f4d14, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.25
+  m_Volume: 0.071
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -11967,262 +11967,327 @@ MonoBehaviour:
     row: 0
     column: 3
     isRightDrum: 1
+    rotation: {x: 0, y: 0, z: 0}
   - timing: 5.6
     row: 0
     column: 1
     isRightDrum: 0
+    rotation: {x: 0, y: 0, z: 0}
   - timing: 9.4
     row: 0
     column: 3
     isRightDrum: 1
+    rotation: {x: 0, y: 0, z: 0}
   - timing: 13.1
     row: 0
     column: 1
     isRightDrum: 0
+    rotation: {x: 0, y: 0, z: 0}
   - timing: 16.9
     row: 0
     column: 1
     isRightDrum: 0
+    rotation: {x: 0, y: 0, z: 0}
   - timing: 16.9
     row: 0
     column: 3
     isRightDrum: 1
+    rotation: {x: 0, y: 0, z: 0}
   - timing: 18.8
     row: 0
     column: 0
     isRightDrum: 0
+    rotation: {x: 0, y: 0, z: 0}
   - timing: 20.6
     row: 0
     column: 4
     isRightDrum: 1
+    rotation: {x: 0, y: 0, z: 0}
   - timing: 22.5
     row: 1
     column: 0
     isRightDrum: 0
+    rotation: {x: 0, y: 0, z: 0}
   - timing: 24.4
     row: 1
     column: 4
     isRightDrum: 1
+    rotation: {x: 0, y: 0, z: 0}
   - timing: 26.3
     row: 0
     column: 1
     isRightDrum: 1
+    rotation: {x: 0, y: 0, z: 0}
   - timing: 28.1
     row: 0
     column: 3
     isRightDrum: 0
+    rotation: {x: 0, y: 0, z: 0}
   - timing: 28.6
     row: 0
     column: 3
     isRightDrum: 1
+    rotation: {x: 0, y: 0, z: 0}
   - timing: 29.1
     row: 0
     column: 1
     isRightDrum: 0
+    rotation: {x: 0, y: 0, z: 0}
   - timing: 29.6
     row: 0
     column: 1
     isRightDrum: 1
+    rotation: {x: 0, y: 0, z: 0}
   - timing: 32.6
     row: 0
     column: 3
     isRightDrum: 1
+    rotation: {x: 0, y: 0, z: 0}
   - timing: 32.8
     row: 0
     column: 4
     isRightDrum: 1
+    rotation: {x: 0, y: 0, z: 0}
   - timing: 33.3
     row: 0
     column: 4
     isRightDrum: 1
+    rotation: {x: 0, y: 0, z: 0}
   - timing: 33.8
     row: 0
     column: 3
     isRightDrum: 1
+    rotation: {x: 0, y: 0, z: 0}
   - timing: 34.5
     row: 0
     column: 1
     isRightDrum: 0
+    rotation: {x: 0, y: 0, z: 0}
   - timing: 34.7
     row: 0
     column: 0
     isRightDrum: 0
+    rotation: {x: 0, y: 0, z: 0}
   - timing: 35.2
     row: 0
     column: 0
     isRightDrum: 0
+    rotation: {x: 0, y: 0, z: 0}
   - timing: 35.6
     row: 0
     column: 1
     isRightDrum: 0
+    rotation: {x: 0, y: 0, z: 0}
   - timing: 35.6
     row: 0
     column: 3
     isRightDrum: 1
+    rotation: {x: 0, y: 0, z: 0}
   - timing: 36.1
     row: 0
     column: 0
     isRightDrum: 0
+    rotation: {x: 0, y: 0, z: 0}
   - timing: 36.1
     row: 0
     column: 4
     isRightDrum: 1
+    rotation: {x: 0, y: 0, z: 0}
   - timing: 36.6
     row: 0
     column: 1
     isRightDrum: 0
+    rotation: {x: 0, y: 0, z: 0}
   - timing: 36.6
     row: 0
     column: 3
     isRightDrum: 1
+    rotation: {x: 0, y: 0, z: 0}
   - timing: 37
     row: 0
     column: 4
     isRightDrum: 1
+    rotation: {x: 0, y: 0, z: 0}
   - timing: 37
     row: 0
     column: 0
     isRightDrum: 0
+    rotation: {x: 0, y: 0, z: 0}
   - timing: 37.5
     row: 0
     column: 2
     isRightDrum: 0
+    rotation: {x: 0, y: 0, z: 0}
   - timing: 38.4
     row: 0
     column: 1
     isRightDrum: 0
+    rotation: {x: 0, y: 0, z: 0}
   - timing: 38.9
     row: 0
     column: 3
     isRightDrum: 1
+    rotation: {x: 0, y: 0, z: 0}
   - timing: 39.4
     row: 0
     column: 1
     isRightDrum: 0
+    rotation: {x: 0, y: 0, z: 0}
   - timing: 40.1
     row: 0
     column: 3
     isRightDrum: 1
+    rotation: {x: 0, y: 0, z: 0}
   - timing: 40.3
     row: 0
     column: 4
     isRightDrum: 1
+    rotation: {x: 0, y: 0, z: 0}
   - timing: 40.8
     row: 0
     column: 4
     isRightDrum: 1
+    rotation: {x: 0, y: 0, z: 0}
   - timing: 41.3
     row: 1
     column: 4
     isRightDrum: 1
+    rotation: {x: 0, y: 0, z: 0}
   - timing: 41.7
     row: 0
     column: 3
     isRightDrum: 1
+    rotation: {x: 0, y: 0, z: 0}
   - timing: 42.2
     row: 1
     column: 4
     isRightDrum: 1
+    rotation: {x: 0, y: 0, z: 0}
   - timing: 42.7
     row: 1
     column: 4
     isRightDrum: 1
+    rotation: {x: 0, y: 0, z: 0}
   - timing: 43.1
     row: 0
     column: 4
     isRightDrum: 1
+    rotation: {x: 0, y: 0, z: 0}
   - timing: 43.6
     row: 0
     column: 2
     isRightDrum: 0
+    rotation: {x: 0, y: 0, z: 0}
   - timing: 44.1
     row: 0
     column: 0
     isRightDrum: 0
+    rotation: {x: 0, y: 0, z: 0}
   - timing: 44.5
     row: 0
     column: 1
     isRightDrum: 0
+    rotation: {x: 0, y: 0, z: 0}
   - timing: 45
     row: 0
     column: 2
     isRightDrum: 0
+    rotation: {x: 0, y: 0, z: 0}
   - timing: 46.2
     row: 0
     column: 0
     isRightDrum: 0
+    rotation: {x: 0, y: 0, z: 0}
   - timing: 46.4
     row: 0
     column: 1
     isRightDrum: 0
+    rotation: {x: 0, y: 0, z: 0}
   - timing: 46.6
     row: 0
     column: 2
     isRightDrum: 0
+    rotation: {x: 0, y: 0, z: 0}
   - timing: 46.9
     row: 0
     column: 3
     isRightDrum: 1
+    rotation: {x: 0, y: 0, z: 0}
   - timing: 46.9
     row: 0
     column: 3
     isRightDrum: 0
+    rotation: {x: 0, y: 0, z: 0}
   - timing: 47.3
     row: 0
     column: 4
     isRightDrum: 1
+    rotation: {x: 0, y: 0, z: 0}
   - timing: 47.3
     row: 0
     column: 0
     isRightDrum: 0
+    rotation: {x: 0, y: 0, z: 0}
   - timing: 47.8
     row: 0
     column: 2
     isRightDrum: 1
+    rotation: {x: 0, y: 0, z: 0}
   - timing: 47.8
     row: 0
     column: 1
     isRightDrum: 0
+    rotation: {x: 0, y: 0, z: 0}
   - timing: 48.3
     row: 0
     column: 2
     isRightDrum: 0
+    rotation: {x: 0, y: 0, z: 0}
   - timing: 48.3
     row: 0
     column: 3
     isRightDrum: 1
+    rotation: {x: 0, y: 0, z: 0}
   - timing: 48.8
     row: 1
     column: 4
     isRightDrum: 1
+    rotation: {x: 0, y: 0, z: 0}
   - timing: 49.2
     row: 1
     column: 4
     isRightDrum: 1
+    rotation: {x: 0, y: 0, z: 0}
   - timing: 49.7
     row: 0
     column: 4
     isRightDrum: 1
+    rotation: {x: 0, y: 0, z: 0}
   - timing: 50.2
     row: 1
     column: 0
     isRightDrum: 0
+    rotation: {x: 0, y: 0, z: 0}
   - timing: 50.2
     row: 0
     column: 1
     isRightDrum: 0
+    rotation: {x: 0, y: 0, z: 0}
   - timing: 50.6
     row: 0
     column: 3
     isRightDrum: 1
+    rotation: {x: 0, y: 0, z: 0}
   - timing: 51.1
     row: 0
     column: 0
     isRightDrum: 0
+    rotation: {x: 0, y: 0, z: 0}
   - timing: 51.1
     row: 0
     column: 4
     isRightDrum: 0
+    rotation: {x: 0, y: 0, z: 0}
   showGridGizmos: 0
   showDeathZone: 0
   deathZonePosition: {x: 0, y: 0, z: -5}
@@ -12236,6 +12301,7 @@ MonoBehaviour:
     row: 0
     column: 4
     isRightDrum: 0
+    rotation: {x: 0, y: 0, z: 0}
   noteSpawnOffset: 2
   noteSpawnDistance: 10
   randomBoolOne: 0

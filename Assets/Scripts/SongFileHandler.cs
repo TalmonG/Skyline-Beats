@@ -13,8 +13,8 @@ public static class SongFileHandler // DO NOT TOUCH THIS CODE OR EVERYTHING WILL
     private static readonly float SECONDS_PER_BEAT = 60f / BPM; // Convert beats to seconds
 
     // Beat Saber note types - we only care about actual notes
-    private const int NOTE_TYPE_RED = 0;    // Right hand
-    private const int NOTE_TYPE_BLUE = 1;   // Left hand
+    private const int NOTE_TYPE_RED = 1;    // Right hand
+    private const int NOTE_TYPE_BLUE = 0;   // Left hand
 
     [System.Serializable]
     public class BeatSaberLevelData

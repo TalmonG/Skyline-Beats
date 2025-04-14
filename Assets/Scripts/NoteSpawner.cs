@@ -47,6 +47,7 @@ public class NoteSpawner : MonoBehaviour
     [Header("Note Timing Settings")]
     public float noteSpawnOffset = 2f; 
     public float noteSpawnDistance = 30f;
+    public float songDelay = 0f; // Delay in seconds to offset note spawning
 
     private GameManager gameManager;
 
@@ -77,16 +78,19 @@ public class NoteSpawner : MonoBehaviour
         float currentTime = songManager.GetCurrentSongTime();
         if (currentTime == float.MinValue) return; // Song not playing
         
+        // Apply song delay to current time
+        float adjustedTime = currentTime - songDelay;
+        
         // Log current time every 5 seconds for debugging
-        int currentSecond = Mathf.FloorToInt(currentTime);
+        int currentSecond = Mathf.FloorToInt(adjustedTime);
         if (currentSecond % 5 == 0 && currentSecond != lastLoggedTime)
         {
             lastLoggedTime = currentSecond;
-            Debug.Log($"Current song time: {currentTime:F2}s, Next note at: {noteDataList[0].timing:F2}s");
+            Debug.Log($"Current song time: {adjustedTime:F2}s (with {songDelay:F2}s delay), Next note at: {noteDataList[0].timing:F2}s");
         }
 
         // Spawn notes ahead of time based on current song time
-        while (noteDataList.Count > 0 && noteDataList[0].timing <= currentTime + noteSpawnOffset)
+        while (noteDataList.Count > 0 && noteDataList[0].timing <= adjustedTime + noteSpawnOffset)
         {
             var noteData = noteDataList[0];
             SpawnNote(noteData.row, noteData.column, noteData.isRightDrum);
@@ -94,7 +98,7 @@ public class NoteSpawner : MonoBehaviour
         }
 
         // Check if all notes have been spawned and processed
-        if (noteDataList.Count == 0 && currentTime >= songManager.musicSource.clip.length - 5f)
+        if (noteDataList.Count == 0 && adjustedTime >= songManager.musicSource.clip.length - 5f)
         {
             gameManager.LevelComplete();
         }

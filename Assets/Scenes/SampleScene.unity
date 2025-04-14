@@ -2026,7 +2026,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   musicSource: {fileID: 312483554}
-  songStartDelay: 3
+  songStartDelay: 5
   skipAmount: 5
   skipForwardKey: 275
   skipBackwardKey: 276
@@ -12304,6 +12304,7 @@ MonoBehaviour:
     rotation: {x: 0, y: 0, z: 0}
   noteSpawnOffset: 2
   noteSpawnDistance: 10
+  songDelay: 0
   randomBoolOne: 0
 --- !u!4 &1979134951
 Transform:

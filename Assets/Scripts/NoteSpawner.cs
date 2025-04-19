@@ -48,12 +48,15 @@ public class NoteSpawner : MonoBehaviour
     public float noteSpawnOffset = 2f; 
     public float noteSpawnDistance = 30f;
     public float songDelay = 0f; // Delay in seconds to offset note spawning
+    public float noteSpawningDelay = 0f; // Additional delay for note spawning timing
 
     private GameManager gameManager;
 
     public bool randomBoolOne = false;
     
     private int lastLoggedTime = -1;
+    private float lastBeatTime = -1f;
+    private float beatInterval = 60f / 171f; // 171 BPM = 60/171 seconds per beat
 
     void OnEnable()
     {
@@ -89,10 +92,21 @@ public class NoteSpawner : MonoBehaviour
             Debug.Log($"Current song time: {adjustedTime:F2}s (with {songDelay:F2}s delay), Next note at: {noteDataList[0].timing:F2}s");
         }
 
-        // Spawn notes ahead of time based on current song time
-        while (noteDataList.Count > 0 && noteDataList[0].timing <= adjustedTime + noteSpawnOffset)
+        // Print beat markers (every 1/4 beat)
+        float currentBeat = adjustedTime / beatInterval;
+        float quarterBeat = Mathf.Floor(currentBeat * 4) / 4;
+        
+        if (quarterBeat > lastBeatTime)
+        {
+            lastBeatTime = quarterBeat;
+            Debug.Log($"[BEAT] Time: {adjustedTime:F2}s, Beat: {quarterBeat:F2}");
+        }
+
+        // Spawn notes ahead of time based on current song time, including the note spawning delay
+        while (noteDataList.Count > 0 && noteDataList[0].timing <= adjustedTime + noteSpawnOffset + noteSpawningDelay)
         {
             var noteData = noteDataList[0];
+            Debug.Log($"[NOTE SPAWN] Time: {adjustedTime:F2}s, Note timing: {noteData.timing:F2}s, Row: {noteData.row}, Col: {noteData.column}, Right: {noteData.isRightDrum}");
             SpawnNote(noteData.row, noteData.column, noteData.isRightDrum);
             noteDataList.RemoveAt(0);
         }

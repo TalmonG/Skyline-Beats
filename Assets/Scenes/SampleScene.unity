@@ -12305,6 +12305,7 @@ MonoBehaviour:
   noteSpawnOffset: 2
   noteSpawnDistance: 10
   songDelay: 0
+  noteSpawningDelay: 1
   randomBoolOne: 0
 --- !u!4 &1979134951
 Transform:

@@ -99,7 +99,7 @@ public static class SongFileHandler // DO NOT TOUCH THIS CODE OR EVERYTHING WILL
                 float beatTime = note.timing / SECONDS_PER_BEAT;
                 
                 // Convert our format back to Beat Saber format
-                string beatSaberNote = $"{{\"_time\":{beatTime:F2},\"_lineIndex\":{note.column},\"_lineLayer\":{note.row},\"_type\":{(note.isRightDrum ? 0 : 1)},\"_cutDirection\":1}}";
+                string beatSaberNote = $"{{\"_time\":{beatTime:F2},\"_lineIndex\":{note.column},\"_lineLayer\":{note.row},\"_type\":{(note.isRightDrum ? NOTE_TYPE_RED : NOTE_TYPE_BLUE)},\"_cutDirection\":1}}";
                 beatSaberNotes.Add(beatSaberNote);
             }
 

@@ -6,7 +6,7 @@ public class CoolAnimation : MonoBehaviour
 {
     // references
     public GameObject cubePrefab; 
-    public int numberOfCubes = 15; 
+    public int numberOfCubes = 45; 
     public float spacing = 2f; 
     public Vector3 startPosition = Vector3.zero; 
     private GameObject[] cubes; 

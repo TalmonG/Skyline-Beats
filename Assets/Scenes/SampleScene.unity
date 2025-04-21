@@ -1371,7 +1371,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sounds:
   - name: PowerDown
-    clip: {fileID: 8300000, guid: ae6fee7166a66df4287762fded00c388, type: 3}
+    clip: {fileID: 8300000, guid: ea6f79bda906cf247b113d8cc633893c, type: 3}
     volume: 1
     pitch: 1
     loop: 0
@@ -1384,6 +1384,18 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: LevelComplete
     clip: {fileID: 8300000, guid: fe77006dc28a7b743ad701236d974b90, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: ComboUp
+    clip: {fileID: 8300000, guid: 9bc8ffb9bf4416048a44ff5bf9bce48f, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: DrumBoom
+    clip: {fileID: 8300000, guid: 39354b22ce8d5d7488b58316cf8e3cf6, type: 3}
     volume: 1
     pitch: 1
     loop: 0
@@ -6039,8 +6051,8 @@ Transform:
   m_GameObject: {fileID: 814081968}
   serializedVersion: 2
   m_LocalRotation: {x: -0.23176928, y: 0.12572436, z: -0.13996793, w: 0.9544032}
-  m_LocalPosition: {x: 63.1, y: 32.3, z: -307.3}
-  m_LocalScale: {x: 34.53269, y: 145.93913, z: 34.532692}
+  m_LocalPosition: {x: 55.2, y: 0.1, z: -289.3}
+  m_LocalScale: {x: 34.53269, y: 274.20505, z: 34.532692}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1000981264}

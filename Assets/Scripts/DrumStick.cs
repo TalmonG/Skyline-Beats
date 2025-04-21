@@ -127,6 +127,7 @@ public class DrumStick : MonoBehaviour
         {
             if (other.CompareTag("LeftDrum")) // left hit
             {
+                //audioManager.Play("DrumBoom");
                 Vector3 effectPosition = other.gameObject.transform.position;
                 effectPosition.y += 0.1f;
                 effectPosition.z -= 0.25f;
@@ -153,6 +154,7 @@ public class DrumStick : MonoBehaviour
         {
             if (other.CompareTag("RightDrum")) // right hit
             {
+                //audioManager.Play("DrumBoom");
                 Vector3 effectPosition = other.gameObject.transform.position;
                 effectPosition.y += 0.1f;
                 effectPosition.z -= 0.25f;

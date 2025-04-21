@@ -184,7 +184,7 @@ public class GameManager : MonoBehaviour
         {
             case "Hit":
                 multiplierCounter++;
-                if (multiplierCounter >= 1 && multiplierCounter <= 2)
+                if (multiplierCounter >= 1 && multiplierCounter <= 2 && multiplier == 1)
                 {
                     multiplier = 2;
                     multiplierText.color = new Color32(0, 255, 59, 255);

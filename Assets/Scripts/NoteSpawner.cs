@@ -73,6 +73,7 @@ public class NoteSpawner : MonoBehaviour
 
     void Update()
     {
+        
         if (songManager == null || noteDataList == null || noteDataList.Count == 0)
         {
             return;
@@ -90,6 +91,7 @@ public class NoteSpawner : MonoBehaviour
         {
             lastLoggedTime = currentSecond;
             Debug.Log($"Current song time: {adjustedTime:F2}s (with {songDelay:F2}s delay), Next note at: {noteDataList[0].timing:F2}s");
+            Debug.Log($"Notes remaining: {noteDataList.Count}, Song length: {songManager.musicSource.clip.length:F2}s");
         }
 
         // Print beat markers (every 1/4 beat)
@@ -112,8 +114,16 @@ public class NoteSpawner : MonoBehaviour
         }
 
         // Check if all notes have been spawned and processed
-        if (noteDataList.Count == 0 && adjustedTime >= songManager.musicSource.clip.length - 5f)
+        if (noteDataList.Count == 0 && (adjustedTime >= songManager.musicSource.clip.length - 5f || !songManager.musicSource.isPlaying))
         {
+            Debug.Log($"[LEVEL COMPLETE] Notes remaining: {noteDataList.Count}, Song time: {adjustedTime:F2}s, Song length: {songManager.musicSource.clip.length:F2}s, Is playing: {songManager.musicSource.isPlaying}");
+            gameManager.LevelComplete();
+        }
+        
+        // Safety check - if we're very close to the end of the song (last 1 second), force level completion
+        if (adjustedTime >= songManager.musicSource.clip.length - 1f)
+        {
+            Debug.Log($"[FORCE LEVEL COMPLETE] Very close to end of song. Notes remaining: {noteDataList.Count}, Song time: {adjustedTime:F2}s, Song length: {songManager.musicSource.clip.length:F2}s");
             gameManager.LevelComplete();
         }
     }

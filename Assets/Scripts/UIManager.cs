@@ -97,6 +97,7 @@ public class UIManager : MonoBehaviour
 
     public void EnableLevelCompleteCanvas()
     {
+        Debug.Log("[UI MANAGER] Enabling LevelCompleteCanvas");
         levelCompleteCanvas.SetActive(true);
     }
 

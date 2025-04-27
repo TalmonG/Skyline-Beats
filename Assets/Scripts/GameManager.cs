@@ -107,12 +107,14 @@ public class GameManager : MonoBehaviour
 
     public void LevelComplete()
     {
+        Debug.Log("[GAME MANAGER] LevelComplete called");
         //isLevelComplete = true; // useless for now but might be useful in future
         // coming from noteSpawner script
         uIManager.EnableLevelCompleteCanvas();
         songManager.FadeOutSong();
         scoreLevelCompleteText.text = "Score: " + score;
         //maxComboLevelCompleteText.text = "Max Combo: " + combo;
+        Debug.Log("LEVEL COMPLETE WAKANDA FOREVER");
     }
 
     public void StartGame()

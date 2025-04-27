@@ -37,6 +37,21 @@ public class SongManager : MonoBehaviour
         {
             SkipBackward();
         }
+        
+        // Check if song has finished playing
+        if (musicSource != null && musicSource.clip != null && !musicSource.isPlaying && isSongPlaying)
+        {
+            Debug.Log("[SONG MANAGER] Song has finished playing naturally");
+            isSongPlaying = false;
+            
+            // Find the GameManager and call LevelComplete
+            GameManager gameManager = FindObjectOfType<GameManager>();
+            if (gameManager != null)
+            {
+                Debug.Log("[SONG MANAGER] Calling LevelComplete from SongManager");
+                gameManager.LevelComplete();
+            }
+        }
     }
 
     public void ResetSong()

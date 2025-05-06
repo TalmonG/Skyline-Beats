@@ -6912,7 +6912,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Seanyy - Ocean [NCS Release]
+  m_text: Blinding Lights - The Weekend
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 779427ccda8e07c4ab9c23d37182ccda, type: 2}
   m_sharedMaterial: {fileID: -5405812472362461682, guid: 779427ccda8e07c4ab9c23d37182ccda, type: 2}
@@ -7695,7 +7695,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1096395375
 RectTransform:
   m_ObjectHideFlags: 0
@@ -8788,7 +8788,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1370769874
 RectTransform:
   m_ObjectHideFlags: 0
@@ -10368,7 +10368,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Texture: {fileID: 2800000, guid: 2f55f6e8a44dae84ead7bec7ca529293, type: 3}
+  m_Texture: {fileID: 2800000, guid: a29494869d4f1a248906eaa1c9fd4745, type: 3}
   m_UVRect:
     serializedVersion: 2
     x: 0

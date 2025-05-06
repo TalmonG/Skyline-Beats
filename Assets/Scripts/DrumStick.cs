@@ -8,12 +8,11 @@ public class DrumStick : MonoBehaviour
     public bool isLeftDrumStick;
     private GameManager gameManager;
 
-    // Effects
+    // effects
     public ParticleManager particleManager;
     public AudioManager audioManager;
 
-    // Collision detection settings
-    public float collisionCheckRate = 0.01f; // Check collisions every 0.01 seconds
+    public float collisionCheckRate = 0.01f; // check collisions every 0.01 seconds
     private Vector3 previousPosition;
     private Quaternion previousRotation;
     private bool isColliding = false;
@@ -41,11 +40,11 @@ public class DrumStick : MonoBehaviour
 
         rb.isKinematic = true;
         
-        // Store initial position and rotation
+        // store initial position and rotation
         previousPosition = transform.position;
         previousRotation = transform.rotation;
         
-        // Start continuous collision checking
+        // start continuous collision checking
         StartCoroutine(ContinuousCollisionCheck());
     }
 
@@ -53,19 +52,18 @@ public class DrumStick : MonoBehaviour
     {
         while (true)
         {
-            // Check for collisions between previous and current position
+            // check for collisions between previous and current position
             if (currentCollisionObject != null)
             {
-                // If we were colliding, check if we're still colliding
+                // if colliding check if still colliding
                 if (!IsCollidingWith(currentCollisionObject))
                 {
-                    // We've moved out of collision
                     isColliding = false;
                     currentCollisionObject = null;
                 }
             }
             
-            // Store current position and rotation for next check
+            // store current position and rotation for next check
             previousPosition = transform.position;
             previousRotation = transform.rotation;
             
@@ -82,13 +80,13 @@ public class DrumStick : MonoBehaviour
         
         if (stickCollider == null || noteCollider == null) return false;
         
-        // Check if the colliders are intersecting
+        // check if colliders are intersecting
         return stickCollider.bounds.Intersects(noteCollider.bounds);
     }
 
     void OnTriggerEnter(Collider other)
     {
-        // Store the collision object for continuous checking
+        // store collision object for continuous checking
         currentCollisionObject = other.gameObject;
         isColliding = true;
         
@@ -97,7 +95,7 @@ public class DrumStick : MonoBehaviour
     
     void OnTriggerStay(Collider other)
     {
-        // If we're already colliding with this object, handle it again
+        // if already colliding handle again
         if (currentCollisionObject == other.gameObject)
         {
             HandleCollision(other);
@@ -106,7 +104,7 @@ public class DrumStick : MonoBehaviour
     
     void OnTriggerExit(Collider other)
     {
-        // Clear the collision object when we exit
+        // clear collision object when exit
         if (currentCollisionObject == other.gameObject)
         {
             currentCollisionObject = null;
@@ -150,7 +148,7 @@ public class DrumStick : MonoBehaviour
                 Destroy(other.gameObject);
             }
         }
-        else // Right drumstick
+        else // right drumstick
         {
             if (other.CompareTag("RightDrum")) // right hit
             {

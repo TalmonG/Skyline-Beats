@@ -17,5 +17,5 @@ public class LevelData
 {
     public string songName;
     public DrumNoteData[] notes;
-    public float songLength; // Length of the song in seconds
+    public float songLength; // length of the song in seconds
 }

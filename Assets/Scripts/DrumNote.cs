@@ -3,7 +3,7 @@ using UnityEngine;
 public class DrumNote : MonoBehaviour
 {
     public bool isRightDrum; // true for right drum, false for left drum
-    public float speed; // No longer static, calculated per note
+    public float speed; // not static, calculated per note
     public Vector3 targetPosition;
     public Vector3 spawnRotation;
     private GameManager gameManager;

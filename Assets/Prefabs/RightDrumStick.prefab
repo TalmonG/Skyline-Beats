@@ -1088,6 +1088,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ParticleSystem
       objectReference: {fileID: 0}
+    - target: {fileID: 7063021278532092170, guid: f041a0fa717f95149a3d612682356ebe, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.034
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
